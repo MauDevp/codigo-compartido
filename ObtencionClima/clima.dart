@@ -1,3 +1,4 @@
+//importacion de librerías
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
@@ -15,6 +16,7 @@ void clearScreen() {
   }
 }
 
+//Funcion principal de tipo async
 void main() async {
   //creamos una variable para el ciclo for
   bool valor = false;
@@ -26,6 +28,8 @@ void main() async {
   //api key: 775bcc2c8a820947d590b91a3dfd815d de (https://openweathermap.org/)
   final apiKey = "775bcc2c8a820947d590b91a3dfd815d";
   clearScreen();
+
+  //Impresion del menu
   print('_______________________________________________________');
   print("|   Bienvenido al servicio de pronóstico de clima.    |");
   print('|                                                     |');
@@ -40,10 +44,12 @@ void main() async {
   print('|_____________________________________________________|');
   print("\n\n");
   stdout.write("Opcion: ");
+    
   // Obtén la ubicación seleccionada del usuario.
   int seleccion = int.parse(stdin.readLineSync()!);
   clearScreen();
-  // Define las coordenadas de las ubicaciones.
+    
+  // Map para definir las coordenadas de las ubicaciones.
   Map<int, String> ubicaciones = {
     1: "Guadalajara",
     2: "Zapopan",
@@ -63,16 +69,17 @@ void main() async {
   } 
   //Condicion para salir
   else if(seleccion==0){
-    clearScreen();
-        print('Seguro que deseas salir ?');
-        stdout.write("\n\n S o N_: ");
-        String respuesta = stdin.readLineSync()!;
+      clearScreen();
+      print('Seguro que deseas salir ?');
+      stdout.write("\n\n S o N_: ");
+      String respuesta = stdin.readLineSync()!;
         //condicion para confirmar salida del programa
         if(respuesta == 'S' || respuesta == 's'){
           valor = true;
           clearScreen();
           exit(0);
         }
+        // Si la opcion ingresada no es S o s, nos arroja el mensaje de "opcion no valida"
         else{
             clearScreen();
             print("Opcion no valida");
